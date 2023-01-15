@@ -3,11 +3,18 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { Header } from '../components/Header/Header';
-import { getAddressFromCoords } from '../utils/GeoUtils';
+import { SingleLineInput } from '../components/SingleLineInput';
+import {
+  getAddressFromCoords,
+  getCoordsFromAddress,
+  getCoordsFromKeyword,
+} from '../utils/GeoUtils';
 
 export const MainScreen: React.FC = () => {
   // latitude: 37.4922459
   // longitude: 127.0881366
+
+  const [query, setQuery] = useState<string>('');
 
   const [currentRegion, setCurrentRegion] = useState<{
     latitude: number;
@@ -53,15 +60,40 @@ export const MainScreen: React.FC = () => {
     [],
   );
 
+  const onFindAddress = useCallback<() => Promise<void>>(async () => {
+    const keywordResult = await getCoordsFromKeyword(query);
+    const addressResult = await getCoordsFromAddress(query);
+
+    if (keywordResult !== null) {
+      setCurrentAddress(keywordResult.address);
+      setCurrentRegion({
+        latitude: parseFloat(keywordResult.latitude.toString()),
+        longitude: parseFloat(keywordResult.longitude.toString()),
+      });
+      return;
+    }
+
+    if (addressResult === null) {
+      console.error('주소값을 찾지 못했습니다.');
+      return;
+    }
+
+    setCurrentAddress(addressResult.address);
+    setCurrentRegion({
+      latitude: parseFloat(addressResult.latitude.toString()),
+      longitude: parseFloat(addressResult.longitude.toString()),
+    });
+  }, [query]);
+
   useEffect(() => {
     getMyLocation();
   }, [getMyLocation]);
 
   return (
     <View style={styles.container}>
-      <Header>
+      {/* <Header>
         <Header.Title title="Main" />
-      </Header>
+      </Header> */}
 
       <MapView
         style={styles.map}
@@ -85,8 +117,19 @@ export const MainScreen: React.FC = () => {
         />
       </MapView>
 
+      <View style={styles.inputContainer}>
+        <View style={styles.inputBackground}>
+          <SingleLineInput
+            value={query}
+            placeholder="주소를 입력해 주세요"
+            onChangeText={setQuery}
+            onSubmitEditing={onFindAddress}
+          />
+        </View>
+      </View>
+
       {currentAddress !== null && (
-        <View style={StyleSheet.address}>
+        <View style={styles.address}>
           <View style={styles.addressContent}>
             <Text style={styles.addressText}>{currentAddress}</Text>
           </View>
@@ -120,5 +163,14 @@ const styles = StyleSheet.create({
   addressText: {
     fontSize: 16,
     color: 'white',
+  },
+  inputContainer: {
+    position: 'absolute',
+    top: 24,
+    left: 24,
+    right: 24,
+  },
+  inputBackground: {
+    backgroundColor: 'white',
   },
 });
