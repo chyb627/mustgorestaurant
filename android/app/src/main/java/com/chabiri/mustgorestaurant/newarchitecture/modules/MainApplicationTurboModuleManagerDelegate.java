@@ -1,4 +1,4 @@
-package com.mustgorestaurant.newarchitecture.modules;
+package com.chabiri.mustgorestaurant.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

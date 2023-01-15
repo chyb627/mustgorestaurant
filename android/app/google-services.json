@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "364393374371",
+    "project_id": "mustgorestaurant",
+    "storage_bucket": "mustgorestaurant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364393374371:android:2388d623d748baf753d516",
+        "android_client_info": {
+          "package_name": "com.chabiri.mustgorestaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "364393374371-vge6tgle8i42f6rishlr5d1jsf482nc6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6BaP4gccwrBu6lhQD1SWpm_IJCME-jNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "364393374371-vge6tgle8i42f6rishlr5d1jsf482nc6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "364393374371-1e0b4gad8ouktehn3pacjqlnu3oa6of7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.chabiri.mustgorestaurant"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

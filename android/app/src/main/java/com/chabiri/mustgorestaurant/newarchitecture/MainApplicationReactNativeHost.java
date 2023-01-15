@@ -1,4 +1,4 @@
-package com.mustgorestaurant.newarchitecture;
+package com.chabiri.mustgorestaurant.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.mustgorestaurant.BuildConfig;
-import com.mustgorestaurant.newarchitecture.components.MainComponentsRegistry;
-import com.mustgorestaurant.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.chabiri.mustgorestaurant.BuildConfig;
+import com.chabiri.mustgorestaurant.newarchitecture.components.MainComponentsRegistry;
+import com.chabiri.mustgorestaurant.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
