@@ -1,9 +1,10 @@
 import Geolocation from '@react-native-community/geolocation';
 import React, { useCallback, useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { Header } from '../components/Header/Header';
 import { SingleLineInput } from '../components/SingleLineInput';
+import { useRootNavigation } from '../navigation/RootNavigation';
 import {
   getAddressFromCoords,
   getCoordsFromAddress,
@@ -13,6 +14,8 @@ import {
 export const MainScreen: React.FC = () => {
   // latitude: 37.4922459
   // longitude: 127.0881366
+
+  const navigation = useRootNavigation<'Main'>();
 
   const [query, setQuery] = useState<string>('');
 
@@ -85,6 +88,18 @@ export const MainScreen: React.FC = () => {
     });
   }, [query]);
 
+  const onPressBottomAddress = useCallback(() => {
+    if (currentAddress === null) {
+      return;
+    }
+
+    navigation.push('Add', {
+      latitude: currentRegion.latitude,
+      longitude: currentRegion.longitude,
+      address: currentAddress,
+    });
+  }, [currentAddress, currentRegion.latitude, currentRegion.longitude, navigation]);
+
   useEffect(() => {
     getMyLocation();
   }, [getMyLocation]);
@@ -130,9 +145,9 @@ export const MainScreen: React.FC = () => {
 
       {currentAddress !== null && (
         <View style={styles.address}>
-          <View style={styles.addressContent}>
+          <Pressable onPress={onPressBottomAddress} style={styles.addressContent}>
             <Text style={styles.addressText}>{currentAddress}</Text>
-          </View>
+          </Pressable>
         </View>
       )}
     </View>
