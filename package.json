@@ -6,11 +6,12 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
     "aos:clean": "cd android && ./gradlew clean && cd ..",
     "ios:clean": "cd ios && rm -rf Pods && pod cache clean --all && pod install && cd ..",
     "restart": "react-native start --reset-cache",
-    "pod": "cd ios && pod install && cd .."
+    "pod": "cd ios && pod install && cd ..",
+    "test": "jest",
+    "test:typescript": "tsc"
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.2",

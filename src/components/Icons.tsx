@@ -1,16 +1,5 @@
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import React from 'react';
-// export class Icon extends React.Component{
-//     render(){
-//         return (
-//             <Ionicons
-//                 name={this.props.name}
-//                 size={this.props.size}
-//                 color={this.props.color}
-//                 />
-//         )
-//     }
-// }
 
 export type TypeIconName = string;
 

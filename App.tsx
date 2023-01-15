@@ -6,7 +6,7 @@ const App = () => {
   return (
     <SafeAreaView style={styles.body}>
       <View>
-        <Icon name="arrow-back" size={24} />
+        <Icon name="arrow-back" size={24} color="blue" />
       </View>
     </SafeAreaView>
   );
