@@ -20,6 +20,17 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakao	64bd90bd3c2798704f17bedaf6610cbb</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -70,5 +81,15 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+  
+  <key>KAKAO_APP_KEY</key>
+  <string>64bd90bd3c2798704f17bedaf6610cbb</string>
+  <key>LSApplicationQueriesSchemes</key>
+  <array>
+      <!-- 카카오톡으로 로그인 -->
+      <string>kakaokompassauth</string>
+      <!-- 카카오링크 -->
+      <string>kakaolink</string>
+  </array>
 </dict>
 </plist>

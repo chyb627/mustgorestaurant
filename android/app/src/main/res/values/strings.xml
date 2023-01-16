@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">mustgorestaurant</string>
+    <string name="kakao_app_key">64bd90bd3c2798704f17bedaf6610cbb</string>
 </resources>

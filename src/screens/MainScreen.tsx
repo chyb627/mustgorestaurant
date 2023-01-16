@@ -23,7 +23,7 @@ export const MainScreen: React.FC = () => {
   const [markerList, setMarkerList] = useState<
     { latitude: number; longitude: number; title: string; address: string }[]
   >([]);
-  console.log('markerList::', markerList);
+
   const [currentRegion, setCurrentRegion] = useState<{
     latitude: number;
     longitude: number;
@@ -157,6 +157,14 @@ export const MainScreen: React.FC = () => {
                   longitude: item.longitude,
                 }}
                 pinColor="blue"
+                onCalloutPress={() => {
+                  navigation.push('Detail', {
+                    latitude: item.latitude,
+                    longitude: item.longitude,
+                    address: item.address,
+                    title: item.title,
+                  });
+                }}
               />
             );
           })}
