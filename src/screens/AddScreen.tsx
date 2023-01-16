@@ -6,14 +6,33 @@ import { Header } from '../components/Header/Header';
 import { SingleLineInput } from '../components/SingleLineInput';
 import { Spacer } from '../components/Spacer';
 import { Typography } from '../components/Typography';
-import { useRootRoute } from '../navigation/RootNavigation';
+import { useRootNavigation, useRootRoute } from '../navigation/RootNavigation';
+import { saveNewRestraunt } from '../utils/RealTimeDbUtils';
 
 export const AddScreen: React.FC = () => {
+  const navigation = useRootNavigation<'Add'>();
   const routes = useRootRoute<'Add'>();
 
   const [title, setTitle] = useState('');
-  const onPressBack = useCallback(() => {}, []);
-  const onPressSave = useCallback(() => {}, []);
+
+  const onPressBack = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
+
+  const onPressSave = useCallback(async () => {
+    if (title === '') {
+      return;
+    }
+
+    await saveNewRestraunt({
+      title,
+      latitude: routes.params.latitude,
+      longitude: routes.params.longitude,
+      address: routes.params.address,
+    });
+
+    navigation.goBack();
+  }, [navigation, routes.params.latitude, routes.params.longitude, routes.params.address, title]);
 
   return (
     <View style={styles.container}>
@@ -61,7 +80,9 @@ export const AddScreen: React.FC = () => {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Typography fontSize={20}>저장하기</Typography>
+            <Typography fontSize={20} color="white">
+              저장하기
+            </Typography>
           </View>
         </Button>
       </View>

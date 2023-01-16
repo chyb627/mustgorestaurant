@@ -10,6 +10,7 @@ import {
   getCoordsFromAddress,
   getCoordsFromKeyword,
 } from '../utils/GeoUtils';
+import { getRestrauntList } from '../utils/RealTimeDbUtils';
 
 export const MainScreen: React.FC = () => {
   // latitude: 37.4922459
@@ -18,7 +19,11 @@ export const MainScreen: React.FC = () => {
   const navigation = useRootNavigation<'Main'>();
 
   const [query, setQuery] = useState<string>('');
-
+  const [isMapReady, setIsMapReady] = useState<boolean>(false);
+  const [markerList, setMarkerList] = useState<
+    { latitude: number; longitude: number; title: string; address: string }[]
+  >([]);
+  console.log('markerList::', markerList);
   const [currentRegion, setCurrentRegion] = useState<{
     latitude: number;
     longitude: number;
@@ -100,6 +105,12 @@ export const MainScreen: React.FC = () => {
     });
   }, [currentAddress, currentRegion.latitude, currentRegion.longitude, navigation]);
 
+  const onMapReady = useCallback(async () => {
+    setIsMapReady(true);
+    const restrauntList = await getRestrauntList();
+    setMarkerList(restrauntList);
+  }, []);
+
   useEffect(() => {
     getMyLocation();
   }, [getMyLocation]);
@@ -121,15 +132,34 @@ export const MainScreen: React.FC = () => {
           latitudeDelta: 0.015,
           longitudeDelta: 0.0121,
         }}
+        onMapReady={onMapReady}
         onLongPress={(event) => {
           onChangeLocation(event.nativeEvent.coordinate);
         }}>
-        <Marker
-          coordinate={{
-            latitude: currentRegion.latitude,
-            longitude: currentRegion.longitude,
-          }}
-        />
+        {isMapReady && (
+          <Marker
+            coordinate={{
+              latitude: currentRegion.latitude,
+              longitude: currentRegion.longitude,
+            }}
+          />
+        )}
+
+        {isMapReady &&
+          markerList.map((item, index) => {
+            return (
+              <Marker
+                key={`marker-list-${index}`}
+                title={item.title}
+                description={item.address}
+                coordinate={{
+                  latitude: item.latitude,
+                  longitude: item.longitude,
+                }}
+                pinColor="blue"
+              />
+            );
+          })}
       </MapView>
 
       <View style={styles.inputContainer}>
