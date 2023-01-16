@@ -45,6 +45,7 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = mustgorestaurant/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-mustgorestaurant-mustgorestaurantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mustgorestaurant-mustgorestaurantTests.release.xcconfig"; path = "Target Support Files/Pods-mustgorestaurant-mustgorestaurantTests/Pods-mustgorestaurant-mustgorestaurantTests.release.xcconfig"; sourceTree = "<group>"; };
 		C8DD52FBAA91C7C874012CCE /* Pods_mustgorestaurant_mustgorestaurantTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mustgorestaurant_mustgorestaurantTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2242E2829757A0D00D73D2A /* mustgorestaurant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = mustgorestaurant.entitlements; path = mustgorestaurant/mustgorestaurant.entitlements; sourceTree = "<group>"; };
 		E2935CBE29740FBC0039DBB3 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		E2935CBF29740FBC0039DBB3 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		E2935CC029740FBC0039DBB3 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 		13B07FAE1A68108700A75B9A /* mustgorestaurant */ = {
 			isa = PBXGroup;
 			children = (
+				E2242E2829757A0D00D73D2A /* mustgorestaurant.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -552,6 +554,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mustgorestaurant/mustgorestaurant.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P44S9M78WQ;
 				ENABLE_BITCODE = NO;
@@ -581,6 +584,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mustgorestaurant/mustgorestaurant.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P44S9M78WQ;
 				INFOPLIST_FILE = mustgorestaurant/Info.plist;

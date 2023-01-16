@@ -1,6 +1,8 @@
 import React, { useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
+import Share from 'react-native-share';
 import { Button } from '../components/Button';
 import { Header } from '../components/Header/Header';
 import { SingleLineInput } from '../components/SingleLineInput';
@@ -28,6 +30,19 @@ export const DetailScreen: React.FC = () => {
       },
     });
   }, [routes.params.address, routes.params.title]);
+
+  const onPressShare = useCallback(async () => {
+    const link = await dynamicLinks().buildShortLink({
+      link: 'https://testurl.test/',
+      domainUriPrefix: 'https://mustgorestaurant.page.link',
+    });
+
+    Share.open({
+      url: link,
+    });
+
+    console.log('link::', link);
+  }, []);
 
   const onPressBack = useCallback(() => {
     navigation.goBack();
@@ -67,6 +82,23 @@ export const DetailScreen: React.FC = () => {
           />
         </MapView>
         <Spacer space={48} />
+
+        <Button onPress={onPressShare}>
+          <View
+            style={{
+              backgroundColor: 'black',
+              paddingHorizontal: 24,
+              paddingVertical: 12,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Typography fontSize={20} color="white">
+              공유하기
+            </Typography>
+          </View>
+        </Button>
+
+        <Spacer space={12} />
 
         <Button onPress={onPressKakaoShare}>
           <View
