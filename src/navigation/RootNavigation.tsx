@@ -1,5 +1,8 @@
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationProp,
+} from '@react-navigation/native-stack';
 import React from 'react';
 
 import { AddScreen } from '../screens/AddScreen';
@@ -7,7 +10,7 @@ import { DetailScreen } from '../screens/DetailScreen';
 import { MainScreen } from '../screens/MainScreen';
 
 type ScreenParams = {
-  Main: undefinde;
+  Main: undefined;
   Add: { latitude: number; longitude: number; address: string };
   Detail: { latitude: number; longitude: number; address: string; title: string };
 };

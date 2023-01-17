@@ -45,7 +45,12 @@ export const AddScreen: React.FC = () => {
         <Typography fontSize={16}>가게명</Typography>
         <Spacer space={8} />
 
-        <SingleLineInput value={title} placeholder="이름을 입력해 주세요" onChangeText={setTitle} />
+        <SingleLineInput
+          value={title}
+          placeholder="이름을 입력해 주세요"
+          onChangeText={setTitle}
+          onSubmitEditing={() => {}}
+        />
         <Spacer space={24} />
 
         <Typography fontSize={16}>주소</Typography>
